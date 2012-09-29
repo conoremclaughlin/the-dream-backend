@@ -1,0 +1,20 @@
+{
+  "author": "Conor McLaughlin <conoremclaughlin@gmail.com>",
+  "name": "centered-culture",
+  "description": "CC site letting users dip into the stream of culture.",
+  "version": "0.0.0",
+  "homepage": "centersofculture.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/conoremclaughlin/centered-culture.git"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
