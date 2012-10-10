@@ -1,0 +1,12 @@
+{
+  "name": "cc-core",
+  "version": "0.0.0",
+  "description": "Basic functionality of CC.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": "",
+  "author": "centered-culture",
+  "license": "BSD"
+}

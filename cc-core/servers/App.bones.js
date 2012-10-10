@@ -1,12 +1,21 @@
-server = Bones.servers.Main.extend();
+server = servers.Main.extend();
 
 server.prototype.initialize = function(app) {
-	_.bindAll('index', 'center');
+	_.bindAll(this, 'index', 'center');
 
 	// url paths to handle.
 	this.get('/', this.index);
 	this.get('/play', this.love);
-	this.get('/centers/:center', this.center);
+	this.get('/inside/:center', this.center);
+};
+
+server.prototype.index= function(req, res, next) {
+
+
+};
+
+server.prototype.play = function(req, res, next) {
+
 };
 
 server.prototype.center = function(req, res, next) {

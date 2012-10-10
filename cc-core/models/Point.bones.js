@@ -1,2 +1,2 @@
-model = Bones.Models.extend();
+model = Bones.Model.extend();
 

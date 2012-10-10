@@ -15,9 +15,9 @@
 	<header>data.type</header>
 
 <% if (data.stories) { 
-	_.each(data.stories, function(story) {
+	  _.each(data.stories, function(story) {
 %>
-	<article class="comment">
+	  <article class="comment">
 		<header>
 			<div>
 				<span class="user"><%= story.user.name %></span>
@@ -30,8 +30,9 @@
 			</ul>
 		</header>
 		<p><%= story.comment %></p>
-	</article>	
+	  </article>	
 <%
+	  });
 	}
 %>
 	</ul>
