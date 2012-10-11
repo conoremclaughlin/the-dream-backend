@@ -1,0 +1,6 @@
+---
+layout: page
+---
+
+<p>Yo. It's Centered Culture.</p>
+<%= main %>

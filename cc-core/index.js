@@ -14,6 +14,6 @@ plugin.load = function(dir) {
     self.require(dir, 'cc');
     return self;
 };
-console.log('we get here.');
+
 // Load me.
 Bones.load(__dirname);
