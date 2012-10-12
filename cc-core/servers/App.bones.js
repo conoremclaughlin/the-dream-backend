@@ -9,9 +9,9 @@ server.prototype.initialize = function(app) {
 	this.get('/inside/:center', this.center);
 };
 
-server.prototype.index= function(req, res, next) {
-
-
+server.prototype.index = function(req, res, next) {
+    console.log('Pages: ', Bones.plugin.pages, '\n_____________________________');
+    console.log('Templates: ', Bones.plugin.templates, '\n_____________________________');
 };
 
 server.prototype.play = function(req, res, next) {
