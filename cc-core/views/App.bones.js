@@ -5,5 +5,3 @@ view = Backbone.View.extend({
         this.setElement('body');
     }
 });
-
-console.log(templates);
