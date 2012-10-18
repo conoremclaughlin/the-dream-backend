@@ -1,0 +1,6 @@
+[submodule "submodules/bones"]
+	path = submodules/bones
+	url = git@github.com:Wiredcraft/bones.git
+[submodule "submodules/bones-boiler"]
+	path = submodules/bones-boiler
+	url = git@github.com:conoremclaughlin/bones-boiler.git
