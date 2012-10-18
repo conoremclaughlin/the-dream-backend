@@ -15,17 +15,19 @@ server.prototype.initialize = function(app) {
 server.prototype.send = function(req, res, next) {
     // Use requested root template or default to templates.App. No need to
     // allocate view object on the server for the wrapper template.
-    console.log('sending template.');
+    var options = res.locals.options || {};
     var template = res.locals.template || templates.App;
-    var main = res.locals.view || {};
+    options.main = options.main || (res.locals.view ? res.locals.view.render().html() : 'Loading');
+
     // TODO: nothing for now.
     var initialize = function(models, views, routers, templates) {}
         .toString();
-    // options.main takes precedence over a passed view's rendered html.
-    var options = _.defaults(res.locals.options, {
+    console.log('options: ', options);
+
+     // options.main takes precedence over view in case no need to render, only client-side attach.
+    options = _.defaults(options, {
         version: Date.now(),
         title: 'Centered Culture',
-        main: main.render().html(),
         startup: 'Bones.initialize(' + initialize + ');Bones.start();'
     });
 
