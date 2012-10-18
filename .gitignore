@@ -4,6 +4,6 @@
 *~
 
 /node_modules/*
-!bones
-!bones-boiler
+!/node_modules/bones
+!/node_modules/bones-boiler
 */templates/compiled/*
