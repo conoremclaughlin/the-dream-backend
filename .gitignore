@@ -3,7 +3,7 @@
 !.gitmodules
 *~
 
-!/node_modules/bones-boiler
-!/node_modules/bones
 /node_modules/*
+!/node_modules/bones
+!/node_modules/bones-boiler
 */templates/compiled/*
