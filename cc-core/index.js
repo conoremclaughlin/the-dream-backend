@@ -2,8 +2,6 @@ var Bones = require('bones');
 var fs = require('fs');
 var path = require('path');
 
-require('./servers/Main.bones.js');
-
 /**
  * Add the ability to load backends.
  */
@@ -11,13 +9,16 @@ Bones.plugin.pages = {};
 
 // Exposing pages to Bones so they can be rendered with
 // a wrapping dynamic view for things like logged-in users (App._ for example)
-require.extensions['.html'] = _.wrap(require.extensions['._'], function(parent, module, filename) {
+require.extensions['.html'] = function(module, filename) {
+    var content = fs.readFileSync(filename, 'utf8');
+
     // If an err is thrown need to fix the output from printing 'template' to 'pages.'
     try {
-        parent.call(this, module, filename);
+        module.exports.content = content;
+        Bones.plugin.add(module.exports, filename);
     } catch(err) {
         var lines = err.message.split('\n');
-        lines[1] = '    in page ' + filename;
+        lines.splice(1, 0, '    in page ' + filename);
         err.message = lines.join('\n');
         throw err;
     }
@@ -30,7 +31,7 @@ require.extensions['.html'] = _.wrap(require.extensions['._'], function(parent, 
             });
         }
     };
-});
+};
 
 // Who uses .htm, seriously!? It's ugly! But just in case....
 require.extensions['.htm'] = require.extensions['.html'];
