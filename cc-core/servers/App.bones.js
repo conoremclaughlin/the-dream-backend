@@ -1,7 +1,7 @@
 server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
-    _.bindAll(this, 'index', 'center', 'debug', 'send', 'sendPage');
+    _.bindAll(this, 'index', 'debug');
     this.app = app;
 
     // url paths to handle.

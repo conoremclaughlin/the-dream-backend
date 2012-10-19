@@ -1,4 +1,4 @@
-server = Bones.servers.Base.extend();
+server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
     // url paths to handle.

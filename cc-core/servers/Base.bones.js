@@ -28,5 +28,5 @@ server.prototype.send = function(req, res, next) {
 server.prototype.sendPage = function(req, res, next) {
     // TODO: set logged-in user or whatever.
     res.locals.template = templates.Page;
-    return this.send(req, res, next);
+    return server.prototype.send(req, res, next);
 };

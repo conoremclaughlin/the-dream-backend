@@ -49,7 +49,7 @@ Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
     return this;
 });
 
-require('./servers/Base');
+require('./servers/Base.bones.js');
 // Load me. Yo I'm the core dawg. Everyone needs me.
 Bones.load(__dirname);
 

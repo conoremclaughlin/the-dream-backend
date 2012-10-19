@@ -1,7 +1,7 @@
-server = Bones.servers.Base.extend();
+server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
-    _.bindAll(this, 'index', 'center', 'debug', 'send', 'sendPage');
+    _.bindAll(this, 'fill');
     this.app = app;
 
     // url paths to handle.
