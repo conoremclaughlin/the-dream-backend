@@ -32,9 +32,7 @@ require.extensions['.html'] = function(module, filename) {
         }
     };
 };
-
-// Who uses .htm, seriously!? It's ugly! But just in case....
-require.extensions['.htm'] = require.extensions['.html'];
+//TODO TODO TODO: ADD an app object with things like database connections :|
 
 // OVERRIDE this to load and use your own statically compiled directory structure.
 // Note: Bones.plugin.add uses the parent directory of the file to describe its 'kind'
@@ -51,6 +49,7 @@ Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
     return this;
 });
 
+require('./servers/Base');
 // Load me. Yo I'm the core dawg. Everyone needs me.
 Bones.load(__dirname);
 
