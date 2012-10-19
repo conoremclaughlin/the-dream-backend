@@ -1,11 +1,11 @@
 server = Bones.Server.extend();
 
 server.prototype.initialize = function(app) {
-    _.bindAll(this, 'index', 'center', 'debug');
+    _.bindAll(this, 'index', 'center', 'debug', 'send', 'sendPage');
     this.app = app;
 
     // url paths to handle.
-    this.get('/', this.index);
+    this.get('/', this.index, this.sendPage);
     this.get('/play', this.love);
     this.get('/inside/:center', this.center);
     this.get('*', this.debug);
@@ -17,7 +17,8 @@ server.prototype.send = function(req, res, next) {
     // allocate view object on the server for the wrapper template.
     var options = res.locals.options || {};
     var template = res.locals.template || templates.App;
-    options.main = options.main || (res.locals.view ? res.locals.view.render().html() : 'Loading');
+    // pull main from res.locals so handlers don't have to initialize options object just for main html
+    options.main = res.locals.main || (res.locals.view ? res.locals.view.render().html() : 'Loading');
 
     // TODO: nothing for now.
     var initialize = function(models, views, routers, templates) {}
@@ -35,9 +36,16 @@ server.prototype.send = function(req, res, next) {
     res.send(template(options));
 };
 
+//Convenient wrapper for sending pages with headers and footers. Teehee.
+server.prototype.sendPage = function(req, res, next) {
+    // TODO: set logged-in user or whatever.
+    res.locals.template = templates.Page;
+    return this.send(req, res, next);
+};
+
 server.prototype.index = function(req, res, next) {
-    console.log('Pages: ', Bones.plugin.pages, '\n_____________________________');
-    console.log('Templates: ', Bones.plugin.templates, '\n_____________________________');
+    res.locals.main = templates.Index({});
+    return next();
 };
 
 server.prototype.play = function(req, res, next) {
