@@ -24,9 +24,19 @@ server.prototype.send = function(req, res, next) {
     res.send(template(options));
 };
 
-//Convenient wrapper for sending pages with headers and footers. Teehee.
+// Convenient wrapper for sending pages with headers and footers. Teehee.
 server.prototype.sendPage = function(req, res, next) {
     // TODO: set logged-in user or whatever.
     res.locals.template = templates.Page;
     return server.prototype.send(req, res, next);
+};
+
+// Create a form view for a model.
+server.prototype.formView = function(req, res, next) {
+    if (res.locals.model) {
+        res.locals.view = new views.Form({ model: res.locals.model });
+        return next();
+    } else {
+        return res.send('Not sure what happened. Having trouble finding your form. Please speak with the administrator or try again later.', 500);
+    }
 };

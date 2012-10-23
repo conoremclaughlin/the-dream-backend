@@ -15,6 +15,7 @@
     "bones-page": "~0.0.1",
 
     "backbone": "~0.9.2",
+    "backbone-forms": "0.10.x",
     "express": "~2.5.4",
     "jquery": "~1.7.3",
     "mirror": "0.3.x",
@@ -27,6 +28,7 @@
     "connect-mongo": "0.x",
     "passport": "0.1.x",
     "passport-local": "0.1.x",
+    "express-validator": "0.3.x",
 
     "github-flavored-markdown": "1.x.x",
     "yaml-front-matter": "1.x.x",

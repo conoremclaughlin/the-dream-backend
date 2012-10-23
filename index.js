@@ -2,7 +2,6 @@
 
 var Bones = require('bones');
 var _ = require('underscore');
-
 require('./cc-core');
 
 Bones.load(__dirname);

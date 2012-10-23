@@ -12,5 +12,6 @@ server.prototype.initialize = function(app) {
 };
 
 server.prototype.fill = function(req, res, next) {
+
     return next();
 };

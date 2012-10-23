@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 
 /**
- * Add the ability to load backends.
+ * Add pages to the plugin.
  */
 Bones.plugin.pages = {};
 
@@ -32,6 +32,7 @@ require.extensions['.html'] = function(module, filename) {
         }
     };
 };
+
 //TODO TODO TODO: ADD an app object with things like database connections :|
 
 // OVERRIDE this to load and use your own statically compiled directory structure.
@@ -44,13 +45,15 @@ Bones.plugin.loadCompiled = function(dir) {
 };
 
 Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
-    parent.call(this, dir);
+    var success = parent.call(this, dir);
     this.loadCompiled(dir);
-    return this;
+    return success;
 });
 
 require('./servers/Base.bones.js');
+
 // Load me. Yo I'm the core dawg. Everyone needs me.
 Bones.load(__dirname);
 
 require('bones-boiler');
+
