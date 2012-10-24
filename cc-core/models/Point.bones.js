@@ -4,8 +4,6 @@ model = Backbone.Model.extend({
         center:     { type: 'Text', validators: ['required'] },
         country:    { type: 'Select', options: ['USA', 'China'], validators: ['required'] },
         created:    { type: 'Date', validators: ['required'] },
-        location:   { type: 'Object', subSchema: {
-            address: 'Text',
-        }}
+        location:   { type: 'Text' }
     }
 });
