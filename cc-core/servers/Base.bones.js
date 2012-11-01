@@ -1,5 +1,6 @@
 server = Bones.Server.extend();
 
+// Render and send views to the client with everything the boilerplate needs.
 server.prototype.send = function(req, res, next) {
     // Use requested root template or default to templates.App. No need to
     // allocate view object on the server for the wrapper template.
@@ -34,12 +35,15 @@ server.prototype.sendPage = function(req, res, next) {
     return server.prototype.send(req, res, next);
 };
 
-// Create a form view for a model.
+// Create and render a form view for a model.
 server.prototype.formView = function(req, res, next) {
+    var view;
     if (res.locals.model) {
-        res.locals.view = new views.Form({ model: res.locals.model, template: 'submitForm' });
+        view = new views.Form({ model: res.locals.model, template: 'submitForm' });
+        view.render().$el.attr('action', Bones.utils.getUrl(res.locals.model));
+        res.locals.main = view.outerHtml();
         return next();
     } else {
-        return res.send('Not sure what happened. Having trouble finding your form. Please speak with the administrator or try again later.', 500);
+        return res.send('Not sure what happened. Having trouble finding your page. Please speak with the administrator or try again later.', 500);
     }
 };

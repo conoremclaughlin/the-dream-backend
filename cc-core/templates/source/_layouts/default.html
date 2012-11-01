@@ -15,10 +15,9 @@
         <link rel="apple-touch-icon" href="/assets/cc/images/apple-touch-icon.png">
         <link rel="apple-touch-icon" sizes="72x72" href="/assets/cc/images/apple-touch-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="/assets/cc/images/apple-touch-icon-114x114.png">
-        <link rel="stylesheet" href="/assets/cc/css/normalize.css">
-        <link rel="stylesheet" href="/assets/cc/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/assets/cc/css/main.css">
-        <script src="/assets/cc/js/vendor/modernizr-2.6.1.min.js"></script>
+        <link rel="stylesheet" href="/assets/cc/css/normalize.css?<%= version %>">
+        <link rel="stylesheet" href="/assets/cc/css/bootstrap.min.css?<%= version %>">
+        <link rel="stylesheet" href="/assets/cc/css/main.css?<%= version %>">
     </head>
 
     <body>
@@ -39,10 +38,10 @@
         </script>
 
         <!-- TODO: Change to the all.js structure. -->
-        <script src="/assets/cc/js/bootstrap.min.js"></script>
-        <script src="/assets/cc/js/plugins.js"></script>
-        <script src="/assets/cc/js/all.js"></script>
-
+        <script src="/assets/cc/js/plugins.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/bones/all.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/cc/js/vendor/bootstrap.min.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/cc/js/vendor/modernizr-2.6.1.min.js?<%= version %>"></script>
         <script><%= startup %></script>
     </body>
 </html>

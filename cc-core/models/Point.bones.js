@@ -5,5 +5,6 @@ model = Backbone.Model.extend({
         country:    { type: 'Select', options: ['USA', 'China'], validators: ['required'] },
         created:    { type: 'Date', validators: ['required'] },
         location:   { type: 'Text' }
-    }
+    },
+    url: 'create/point'
 });

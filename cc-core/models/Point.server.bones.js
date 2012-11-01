@@ -6,5 +6,5 @@ model.prototype.dbSchema = model.dbSchema = {
     created: 'Date',
     geo: { lat: 'Number', lon: 'Number' },
     address: 'String',
-    vendors: ['Oid']
+    vendors: { type: ['Oid'], method: ['post'] }
 };
