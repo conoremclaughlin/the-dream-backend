@@ -25,9 +25,12 @@ server.prototype.initializeBackends = function(app) {
     db.once('open', function() {
         // yay! register mongoose models for semi-mixins with server-side backbone models.
         try {
+            // XXX: this is fucked up some how. Check what db.model does: registers, or needs to return a model?
+            // Convert to factory like method after defining the initial model?? hmmm....
             _.each(models, function(model) {
                 db.model(model.title, new mongoose.Schema(model.schema));
             });
+            Bones.sync = Bones.plugin.backends.Mongoose.sync;
         } catch(err) {
             console.error('error creating model for schema: ', model.schema);
         }

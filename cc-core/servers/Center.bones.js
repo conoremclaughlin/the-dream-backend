@@ -10,8 +10,3 @@ server.prototype.initialize = function(app) {
     this.post('/create/center', this.create);
     return this;
 };
-
-server.prototype.fill = function(req, res, next) {
-
-    return next();
-};

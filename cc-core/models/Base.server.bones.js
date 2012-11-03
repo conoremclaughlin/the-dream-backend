@@ -10,7 +10,7 @@ model.augment({
         parent.call(this);
         if (!Bones.plugin.app || !Bones.plugin.app.db) { console.error('ERROR: no backend available.'); }
         // bones is awesome so it exposes a model's title for our use :]
-        this.db = new Bones.plugin.app.db(this.title, new mongoose.Schema(this.dbSchema));
+        this.db = new Bones.plugin.app.db(this.title, new mongoose.Schema(this.dbSchema, { autoIndex: false }));
     },
     validate: function(parent, req, res, next) {
         var errors = parent ? parent.call(this) : true;
@@ -41,5 +41,3 @@ model.prototype.permissions = {
     'update': {},
     'delete': {}
 };
-
-model.prototype
