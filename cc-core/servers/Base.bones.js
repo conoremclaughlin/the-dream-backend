@@ -23,7 +23,7 @@ server.prototype.send = function(req, res, next) {
     });
     var debug = template(options);
 
-    console.log('debug: ', debug);
+    console.log('debug Base.send - response: ', debug);
     // Send the page to the client.
     res.send(debug);
 };
@@ -44,6 +44,6 @@ server.prototype.formView = function(req, res, next) {
         res.locals.main = view.outerHtml();
         return next();
     } else {
-        return res.send('Not sure what happened. Having trouble finding your page. Please speak with the administrator or try again later.', 500);
+        return next(new Error('Error occured. Having trouble finding your page. Please contact us or try again later.', 500));
     }
 };

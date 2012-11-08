@@ -45,9 +45,9 @@ Bones.plugin.loadCompiled = function(dir) {
 };
 
 Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
-    var success = parent.call(this, dir);
+    parent.call(this, dir);
     this.loadCompiled(dir);
-    return success;
+    return this;
 });
 
 require('./servers/Base.bones.js');

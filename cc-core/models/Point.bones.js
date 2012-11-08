@@ -6,5 +6,5 @@ model = Backbone.Model.extend({
         created:    { type: 'Date', validators: ['required'] },
         location:   { type: 'Text' }
     },
-    url: 'create/point'
+    url: '/api/point'
 });
