@@ -4,3 +4,6 @@
 [submodule "node_modules/bones-boiler"]
 	path = node_modules/bones-boiler
 	url = git@github.com:conoremclaughlin/bones-boiler.git
+[submodule "node_modules/bones-test"]
+	path = node_modules/bones-test
+	url = git@github.com:conoremclaughlin/bones-test

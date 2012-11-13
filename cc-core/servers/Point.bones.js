@@ -3,8 +3,7 @@ server = servers.Base.extend();
 server.prototype.initialize = function(app) {
     // url paths to handle.
     this.get('/see/:type', this.point, this.sendPage);
-    this.get('/create/point', this.pointForm, this.formView, this.sendPage);
-    this.post('/create/point', this.create);
+    this.get('/point/new', this.pointForm, this.formView, this.sendPage);
     this.get('*', this.debug);
     return this;
 };

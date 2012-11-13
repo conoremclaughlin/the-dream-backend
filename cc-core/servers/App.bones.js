@@ -5,8 +5,9 @@ server = servers.Base.extend();
 server.prototype.initialize = function(app) {
     _.bindAll(this, 'index', 'debug', 'initializeBackends');
     // TODO: move to bones-boiler
-    Bones.plugin.preflightTaskList = [];
-    Bones.plugin.preflightTaskList.push(this.initializeBackends);
+    Bones.sync = Bones.plugin.backends.Mongoose.sync;
+    app.preflightTaskList = [];
+    app.preflightTaskList.push(this.initializeBackends);
 
     this.get('/', this.index, this.sendPage);
 
@@ -32,7 +33,8 @@ server.prototype.initializeBackends = function(next) {
                     Bones.plugin.app.mongooseModels[model.title] = db.model(model.title, new mongoose.Schema(model.prototype.dbSchema));
                 }
             });
-            Bones.sync = Bones.plugin.backends.Mongoose.sync;
+
+            console.log('debug - Bones.sync: ', Bones.sync);
 
             next();
         } catch(err) {

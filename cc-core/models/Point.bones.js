@@ -1,4 +1,4 @@
-model = Backbone.Model.extend({
+model = models.Base.extend({
     schema: {
         name:       { type: 'Text', validators: ['required'] },
         center:     { type: 'Text', validators: ['required'] },

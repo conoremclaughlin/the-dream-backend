@@ -12,7 +12,9 @@ model.augment({
         if (!Bones.plugin.app || !Bones.plugin.app.db) console.error('ERROR models.Base.initialize: no backend available.');
         // bones is awesome so it exposes a model's title for our use :]
         if (Bones.plugin.app.mongooseModels) {
-            this.db = new Bones.plugin.app.mongooseModels[this.title](this.attributes);
+            console.log('DEBUG*************************:', Bones.plugin.app.mongooseModels);
+            console.log('DEBUG************************* title:', this.title);
+            this.db = Bones.plugin.app.mongooseModels[this.constructor.title];
         }
     },
     validate: function(parent, req, res, next) {

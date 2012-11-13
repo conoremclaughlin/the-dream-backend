@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var Bones = require('bones');
-var async = require('async');
+
 require('./cc-core');
 
 Bones.load(__dirname);

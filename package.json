@@ -1,7 +1,7 @@
 {
   "author": "Conor McLaughlin <conoremclaughlin@gmail.com>",
   "name": "cc",
-  "description": "Centered culture site letting users dip into the stream of culture.",
+  "description": "Centered culture site, letting users dip into the stream of culture.",
   "version": "0.0.0",
   "homepage": "centersofculture.com",
   "repository": {
@@ -43,8 +43,7 @@
     "should": "1.x"
   },
   "scripts": {
-    "test": "make test",
-    "start": "node index.js",
+    "test": "mocha -R spec ./test ./cc-*/test",
     "watch": "./node_modules/.bin/supervisor -- ./index.js"
   }
 }
