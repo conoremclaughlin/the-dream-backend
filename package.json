@@ -40,10 +40,11 @@
   "devDependencies": {
     "bones-test": "~0.0.3",
     "mocha": "1.x",
-    "should": "1.x"
+    "should": "1.x",
+    "debug": "0.x"
   },
   "scripts": {
-    "test": "mocha -R spec ./test ./cc-*/test",
+    "test": "mocha ./test ./cc-*/test",
     "watch": "./node_modules/.bin/supervisor -- ./index.js"
   }
 }

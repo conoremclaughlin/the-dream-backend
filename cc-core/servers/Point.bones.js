@@ -1,7 +1,6 @@
 server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
-    // url paths to handle.
     this.get('/see/:type', this.point, this.sendPage);
     this.get('/point/new', this.pointForm, this.formView, this.sendPage);
     this.get('*', this.debug);
@@ -9,7 +8,6 @@ server.prototype.initialize = function(app) {
 };
 
 server.prototype.pointForm = function(req, res, next) {
-    console.log('pointForm called.');
     res.locals.model = new models.Point();
     return next();
 };

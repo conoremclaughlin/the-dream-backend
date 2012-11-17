@@ -1,6 +1,7 @@
 var middleware = require(global.__BonesPath__ || 'bones').middleware;
 
 servers.Middleware.augment({
+
     // removing validateCSRFToken to replace with connect's csrf middleware.
     initialize: function(parent, app) {
         this.use(middleware.sanitizeHost(app));

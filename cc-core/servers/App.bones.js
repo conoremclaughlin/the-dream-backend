@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
-    _.bindAll(this, 'index', 'debug', 'initializeBackends');
+    _.bindAll(this, 'initializeBackends');
     // TODO: move to bones-boiler
     Bones.sync = Bones.plugin.backends.Mongoose.sync;
     app.preflightTaskList = [];
@@ -11,8 +11,6 @@ server.prototype.initialize = function(app) {
 
     this.get('/', this.index, this.sendPage);
 
-    //console.log('debug app: ', app);
-    //console.log('debug this (App server): ', this);
     // globally expose the main application server (this).
     Bones.plugin.app = this;
     return this;
@@ -34,11 +32,9 @@ server.prototype.initializeBackends = function(next) {
                 }
             });
 
-            console.log('debug - Bones.sync: ', Bones.sync);
-
-            next();
+            return next();
         } catch(err) {
-            next('error creating model for schema - ' + model.schema + ' - with error: ' + err);
+            return next(new Error('[warning App.initializeBackends] unable to create db.model: ' + err));
         }
     });
     this.db = db;

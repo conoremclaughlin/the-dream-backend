@@ -1,25 +1,32 @@
 // *************************** REGRESSION ***************************
 // 1. test if Bones.sync has been set from Bones.plugins.backends.Mongoose.sync
-// 2. .
+// 2.
 
 
-// **************************** DEFAULTS ****************************
+// ***************************** TESTS ******************************
+
+process.env.NODE_ENV = 'test';
 
 require('./fixture');
 
 var _ = require('underscore');
 var bonesTest = require('bones-test');
-var testUtils = require('bones-boiler');
-var server = bonesTest.server();
+
 // TODO: change how to require server.
+var server = bonesTest.server();
+// Write to a test database.
+// TODO: write an uninstall method for the test database.
+server.plugin.config.mongoName += '-test';
 
 // Test data.
 var data = {
     name: 'First'
 };
 
-describe('Mongoose Backend and Boiler Model API', function() {
-    describe('Mongoose backend', function() {
+describe('Model API:', function() {
+    bonesTest.utils.initStart(server);
+    describe('mongoose', function() {
+
         it('should be a backend', function(done) {
             server.plugin.backends.should.be.a('object');
             server.plugin.backends.should.have.property('Mongoose');
@@ -28,7 +35,6 @@ describe('Mongoose Backend and Boiler Model API', function() {
 
         it('should initialize and store db models in plugin.app', function(done) {
             server.plugin.should.have.property('app').should.be.a('object');
-            console.log('plugin: ', server.plugin);
             server.plugin.app.should.have.property('mongooseModels').should.be.a('object');
             done();
         });
@@ -36,15 +42,36 @@ describe('Mongoose Backend and Boiler Model API', function() {
         it('should replace Bones.sync with Mongoose.sync', function(done) {
             var Bones = require(global.__BonesPath__ || 'bones');
             try {
-                Bones.sync();
+                Bones.sync({}, {}, function(err) {
+                    // no model in req argument, so should call next with error.
+                    if (err) done();
+                });
             } catch(err) {
                 return done(err);
             }
-            return done();
+        });
+    });
+
+    describe('base models', function() {
+        var model = new server.plugin.models.Base();
+        it('should have a url /api/<title> with no id', function(done) {
+            model.url().should.be.equal('/api/base');
+            done();
+        });
+
+        it('should have a url /api/<title>/:id with a set id', function(done) {
+            model.id = 'cool';
+            model.url().should.be.equal('/api/base/cool');
+            done();
         });
     });
 
     describe('cc-core models', function() {
+        bonesTest.testModel(server, 'Point');
+        bonesTest.testModelCRUDHTTP(server, 'Point', data, {
+            name: 'another name'
+        });
+        /*
         _.each(server.plugin.models, function(model){
             bonesTest.testModel(server, model.constructor.title);
             bonesTest.testModelCRUD(server, model.constructor.title, data, {
@@ -54,5 +81,6 @@ describe('Mongoose Backend and Boiler Model API', function() {
                 name: 'another name'
             });
         });
+        */
     });
 });

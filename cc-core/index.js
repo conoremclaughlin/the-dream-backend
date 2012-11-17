@@ -7,8 +7,11 @@ var path = require('path');
  */
 Bones.plugin.pages = {};
 
-// Exposing pages to Bones so they can be rendered with
-// a wrapping dynamic view for things like logged-in users (App._ for example)
+/**
+ * Exposes html pages to Bones so they can be rendered with
+ * a wrapping dynamic view for things like logged-in users (App._ for example)
+ * TODO: this can be done more elegantly now that I know Bones better.
+ */
 require.extensions['.html'] = function(module, filename) {
     var content = fs.readFileSync(filename, 'utf8');
 
@@ -22,6 +25,7 @@ require.extensions['.html'] = function(module, filename) {
         err.message = lines.join('\n');
         throw err;
     }
+
     // Expose page fetches from the static asset server.
     module.exports.register = function(app) {
         if (app.assets && !(/\.server\._$/.test(filename))) {
@@ -33,15 +37,15 @@ require.extensions['.html'] = function(module, filename) {
     };
 };
 
-//TODO TODO TODO: ADD an app object with things like database connections :|
-
-// OVERRIDE this to load and use your own statically compiled directory structure.
-// Note: Bones.plugin.add uses the parent directory of the file to describe its 'kind'
-// for storage in the Plugin, hence templates/compiled/templates.
-// TODO: May create new addTemplate to allow more flexible directories.....
+/**
+ * OVERRIDE this to load and use your own statically compiled directory structure.
+ * Note: Bones.plugin.add uses the parent directory of the file to describe its 'kind'
+ * for storage in the Plugin, hence templates/compiled/templates.
+ * TODO: May create new addTemplate to allow more flexible directories.....
+ */
 Bones.plugin.loadCompiled = function(dir) {
-    this.require(dir, 'templates/compiled/templates'); // Load statically-compiled dynamic templates.
-    this.require(dir, 'templates/compiled/pages'); // Load static pages for wrapper rendering.
+    this.require(dir, 'templates/compiled/templates');  // Load statically-compiled templates that will still be dynamic.
+    this.require(dir, 'templates/compiled/pages');      // Load static pages for wrapper rendering.
 };
 
 Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
@@ -52,8 +56,7 @@ Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
 
 require('./servers/Base.bones.js');
 
-// Load me. Yo I'm the core dawg. Everyone needs me.
+// Load the CC application.
 Bones.load(__dirname);
 
 require('bones-boiler');
-
