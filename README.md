@@ -4,6 +4,14 @@ To install, clone the repository and run:
 
 ```
 npm install
+git submodule init
+git submodule update
+```
+
+To run:
+
+```
+node ./index.js
 ```
 
 Requirements:
