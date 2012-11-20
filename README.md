@@ -21,6 +21,12 @@ Statically-compiled templates are checked in, but to compile your own, optionall
 sudo gem install jekyll
 ```
 
+To start mongodb:
+
+```
+mongod
+```
+
 To start the server:
 
 ```
