@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var util = require('util');
+var debug = require('debug')('cc-core:base');
 
 model = models.Base;
 
@@ -8,7 +9,7 @@ model.prototype.dbSchema = model.dbSchema = {};
 model.augment({
     initialize: function(parent) {
         parent.call(this);
-        if (!Bones.plugin.app || !Bones.plugin.app.db) console.error('[warning models.base.initialize] no backend available.');
+        if (!Bones.plugin.app || !Bones.plugin.app.db) debug('initialize - no backend available.');
 
         // bones is awesome so it exposes a model's title for our use :)
         if (Bones.plugin.app.mongooseModels) {

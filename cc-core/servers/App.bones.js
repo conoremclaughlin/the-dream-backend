@@ -46,5 +46,7 @@ server.prototype.index = function(req, res, next) {
 };
 
 server.prototype.debug = function(req, res, next) {
-    console.log(req.url);
+    console.log('request');
+    console.log('url: ', req.url);
+    console.log('method: ', req.method);
 };
