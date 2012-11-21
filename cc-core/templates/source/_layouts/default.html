@@ -26,23 +26,21 @@
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
 
-        {{ content}}
+        {{ content }}
 
         <!-- Code from here on out. --> 
 
         <!-- TODO: place at beginning of all.js. Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!-- TODO: Change to the all.js structure. -->
         <script>
             /*var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));*/
         </script>
-
-        <!-- TODO: Change to the all.js structure. -->
         <script src="/assets/cc/js/plugins.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
         <script src="/assets/bones/all.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
         <script src="/assets/bones/vendor.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
-        <script src="/assets/bones-boiler/js/vendor/bootstrap.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
         <script src="/assets/cc/js/vendor/bootstrap.min.js?<%= version %>" type="text/javascript" charset="utf-8"></script>
         <script src="/assets/cc/js/vendor/modernizr-2.6.1.min.js?<%= version %>"></script>
         <script><%= startup %></script>
