@@ -1,4 +1,5 @@
 model = Backbone.Model.extend({
+
     /**
      * Map MongoDB record _id to backbone model.id
      */

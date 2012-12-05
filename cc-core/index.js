@@ -2,9 +2,6 @@ var Bones = require('bones');
 var fs = require('fs');
 var path = require('path');
 
-/**
- * Add pages to the plugin.
- */
 Bones.plugin.pages = {};
 
 /**
@@ -54,9 +51,9 @@ Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
     return this;
 });
 
-require('./servers/Base.bones.js');
+require('bones-boiler');
+require('bones-page');
+require('./routers/Base.page.js');
 
 // Load the CC application.
 Bones.load(__dirname);
-
-require('bones-boiler');

@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 var util = require('util');
 var debug = require('debug')('cc-core:base');
 
@@ -9,15 +8,15 @@ model.prototype.dbSchema = model.dbSchema = {};
 model.augment({
     initialize: function(parent) {
         parent.call(this);
-        if (!Bones.plugin.app || !Bones.plugin.app.db) debug('initialize - no backend available.');
+        if (!Bones.plugin.db) debug('initialize - no backend available.');
 
-        // bones is awesome so it exposes a model's title for our use :)
-        if (Bones.plugin.app.mongooseModels) {
-            this.db = Bones.plugin.app.mongooseModels[this.constructor.title];
+        if (Bones.plugin.mongooseModels) {
+            this.db = Bones.plugin.mongooseModels[this.constructor.title];
         }
 
         return this;
     },
+
     validate: function(parent, req, res, next) {
         var errors = parent ? parent.call(this) : true;
        /*
@@ -38,15 +37,12 @@ model.augment({
         return next();
         */
         return errors;
+    },
+
+    permissions: {
+        'get':      {},
+        'post':     {},
+        'put':      {},
+        'delete':   {}
     }
 });
-
-/**
- * Initialize permission methods for schema property paths.
- */
-model.prototype.permissions = {
-    'get':      {},
-    'post':     {},
-    'put':      {},
-    'delete':   {}
-};
