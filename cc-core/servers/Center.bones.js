@@ -1,8 +1,8 @@
 server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
-    this.get('/inside/:center', this.center, this.sendPage);
-    this.post('/center/new', this.create);
+    this.get('/:center', this.center, this.sendPage);
+    this.post('/new', this.create);
     return this;
 };
 

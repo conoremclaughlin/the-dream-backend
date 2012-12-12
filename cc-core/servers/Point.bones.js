@@ -1,8 +1,8 @@
 server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
-    this.get('/see/:type', this.point, this.sendPage);
-    this.get('/point/new', this.pointForm, this.formView, this.sendPage);
+    this.get('/:point', this.point, this.sendPage);
+    this.get('/new', this.pointForm, this.formView, this.sendPage);
     return this;
 };
 

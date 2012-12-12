@@ -1,19 +1,25 @@
-var mongoose = require('mongoose');
-
 server = servers.Base.extend();
 
 server.prototype.initialize = function(app) {
-    // Set up a special namespace for application-specific features.
+    // Set up our own application namespace.
     Bones.app = this;
 
-    // TODO: move to bones-boiler. Change the naming here, too.  It's confusing.
     this.get('/', this.index, this.sendPage);
     return this;
 };
 
 server.prototype.index = function(req, res, next) {
-    res.locals.main = templates.Index();
-    return next();
+    models.Points.getLatest(function(err, points) {
+        if (err) return next(err);
+        console.log('app.points: ', points);
+        res.locals.main = templates.Index({
+            data: {
+                points: points
+            },
+            itemTemplate: templates.PointDefinition
+        });
+        return next();
+    });
 };
 
 server.prototype.debug = function(req, res, next) {

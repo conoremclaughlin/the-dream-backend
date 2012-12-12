@@ -1,17 +1,19 @@
 router = routers.Base.extend({
-
     routes: {
-        '/': 'home',
+        '/':         'home',
+        '/hello':    'home',
     },
 
-    home: function() {
+    home: function(ctx) {
 
         // TODO: implement backbone marionette here
+        // TODO: don't use the router to remember but just to drop in client-side views?
         console.log('rendering home.');
+        new views.Index();
     }
+
     /*
      *
-
     applications: function(ctx) {
         var self = this;
         var id = ctx.params.id;

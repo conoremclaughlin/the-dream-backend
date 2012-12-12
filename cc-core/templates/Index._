@@ -1,1 +1,4 @@
-<!-- Index._ - just a test for now -->
+<p> why is this not working?!</p>
+<% _.each(data.points, function(point) { %>
+     <%= itemTemplate(point) %>
+<% }); %> 

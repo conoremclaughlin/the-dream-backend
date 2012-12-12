@@ -51,6 +51,7 @@ Bones.plugin.load = _.wrap(Bones.plugin.load, function(parent, dir) {
     return this;
 });
 
+Bones.Backbone.Marionette = require('backbone.marionette/lib/amd/backbone.marionette.js');
 require('bones-boiler');
 require('bones-page');
 require('./routers/Base.page.js');

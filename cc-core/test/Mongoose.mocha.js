@@ -66,6 +66,16 @@ describe('Model API:', function() {
         });
     });
 
+    describe('base collections', function() {
+        it('with "created" should be able to getLatest', function() {
+            done('not implemented');
+        });
+
+        it('should be able to paginate to the second page from the result', function() {
+            done('not implemented');
+        });
+    });
+
     describe('cc-core models', function() {
         bonesTest.testModel(server, 'Point');
         bonesTest.testModelCRUDHTTP(server, 'Point', data, {
