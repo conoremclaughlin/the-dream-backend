@@ -1,0 +1,10 @@
+<div class="marker">
+  <div class="user">
+    <a class="portrait" href="">placeholder</a>
+    <div class="center"><%= model.center %></div>
+  </div>
+  
+  <p> Test comment. </p>
+  <div class="comment"><!-- comment --></div>
+  <a class="country" href="#"><!-- flagUrl --></a>
+</div>

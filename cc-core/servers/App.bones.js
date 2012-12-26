@@ -12,11 +12,9 @@ server.prototype.index = function(req, res, next) {
     models.Points.getLatest(function(err, points) {
         if (err) return next(err);
         console.log('app.points: ', points);
-        res.locals.main = templates.Index({
-            data: {
-                points: points
-            },
-            itemTemplate: templates.PointDefinition
+        res.locals.main = Bones.utils.templateAll('Index', {
+            points: points,
+            model: models.Point
         });
         return next();
     });

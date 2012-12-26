@@ -12,11 +12,6 @@ model = Backbone.Model.extend({
         return url = '/api/' + this.constructor.title.toLowerCase();
     },
 
-    renderAll: function() {
-        if (!this.render) return false;
-        return this.render().renderSubviews();
-    },
-
     renderSubviews: function() {
         Bones.utils.renderSubviews(this.el);
         return this;

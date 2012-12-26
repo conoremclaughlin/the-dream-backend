@@ -1,4 +1,4 @@
 <p> why is this not working?!</p>
-<% _.each(data.points, function(point) { %>
-     <%= itemTemplate(point) %>
+<% _.each(points, function(point) { %>
+     <%= partial('PointDefinition', { model: point }) %>
 <% }); %> 
