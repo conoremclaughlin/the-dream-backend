@@ -2,11 +2,14 @@ router = Bones.Page.extend({
 
     initialize: function(options) {
         // set Marionette instance as the primary app namespace for now.
-        // TODO: may change to page if needed later
         console.log('page router initialized client-side.');
         this.app = new Backbone.Marionette.Application();
         this.app.page = this;
         Bones.app = this.app;
+
+        // Render and attach any subviews as needed.
+        console.log('bones.utils: ', Bones.utils);
+        Bones.utils.renderSubviews('body');
         return this;
     },
 
