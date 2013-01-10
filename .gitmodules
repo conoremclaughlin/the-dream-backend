@@ -1,6 +1,3 @@
-[submodule "node_modules/bones"]
-	path = node_modules/bones
-	url = git@github.com:Wiredcraft/bones.git
 [submodule "node_modules/bones-boiler"]
 	path = node_modules/bones-boiler
 	url = git@github.com:conoremclaughlin/bones-boiler.git

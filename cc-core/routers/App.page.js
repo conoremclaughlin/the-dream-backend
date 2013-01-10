@@ -4,6 +4,19 @@ router = routers.Base.extend({
         '/hello':    'home',
     },
 
+    initialize: function(options) {
+        // set Marionette instance as the primary app namespace for now.
+        console.log('page router initialized client-side: ', this.constructor.title);
+        this.app = new Backbone.Marionette.Application();
+        this.app.page = this;
+        Bones.app = this.app;
+
+        // Render and attach any subviews as needed.
+        Bones.utils.renderSubviews('body');
+
+        return this;
+    },
+
     home: function(ctx) {
 
         // TODO: implement backbone marionette here

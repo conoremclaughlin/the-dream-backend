@@ -1,12 +1,13 @@
 model = models.Points;
 
-/**
- * Requires a db connection to access mongooseModels.
- * @param lt - must be less than
- * @param gt -
- * @param callback - what next?
- * @api public
- */
+Bones.plugin.backends.MonEnumerable.mixinQueries(model);
+
+// example use:
+//Bones.plugin.backends.MonEnumerable.mixinPrototypeQueries(model, model.prototype.getConnection);
+
+console.log('Collection Points: ', util.inspect(model));
+
+/*
 model.getLatest = function(skip, limit, callback) {
     callback = callback || _.last(arguments);
     if (!callback || !_.isFunction(callback)) return false;
@@ -20,4 +21,4 @@ model.getLatest = function(skip, limit, callback) {
         .limit(limit)
         .exec(callback);
     return true;
-};
+};*/
