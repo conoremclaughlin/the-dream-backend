@@ -16,7 +16,7 @@ var bonesTest = require('bones-test');
 var server = bonesTest.server();
 // Write to a test database.
 // TODO: write an uninstall method for the test database.
-server.plugin.config.mongoName += '-test';
+server.plugin.config.mongoName = 'cc-test';
 
 // Test data.
 var data = {
